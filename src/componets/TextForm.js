@@ -2,13 +2,14 @@ import React, {useState} from 'react'
 
 export default function TextForm(props) {
     const handleUpClick = (event) => {
+        // console.log("Uppercase button was clicked" + text);
         event.preventDefault();
         let newText = text.toUpperCase();
         setText(newText);
     }
 
     const handleOnChange = (event) => {
-        console.log("On Change");
+        // console.log("On Change");
         setText(event.target.value);
     }
 
@@ -17,7 +18,8 @@ export default function TextForm(props) {
     // setText("new tetx"); correct way to chnage state
 
   return (
-    <div>
+    <>
+    <div className='Conatainer'>
       <form>
         <h1>{props.heading}</h1>
         <div className="mb-3">
@@ -26,5 +28,13 @@ export default function TextForm(props) {
         <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
         </form>
     </div>
+    <div className="container my-3">
+        <h1>Your text summery</h1>
+        <p>{text.split(" ").length} words, {text.length} characters</p>
+        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <h3>Preview</h3>
+        <p>{text}</p>
+    </div>
+    </>
   )
 }
