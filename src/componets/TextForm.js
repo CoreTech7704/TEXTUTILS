@@ -7,12 +7,14 @@ export default function TextForm(props) {
         event.preventDefault();
         let newText = text.toUpperCase();
         setText(newText);
+        props.showalert("Converted to Uppercase", "success");
     };
 
     const handleLowClick = (event) => {
         event.preventDefault();
         let newText = text.toLowerCase();
         setText(newText);
+        props.showalert("Converted to Lowercase", "success");
     };
 
     const handleOnChange = (event) => {
@@ -21,24 +23,24 @@ export default function TextForm(props) {
 
     const handleCopy = (event) => {
         event.preventDefault();
-        var text = document.getElementById("myBox");
-        text.select();
-        navigator.clipboard.writeText(text.value);
-    }
+        var textArea = document.getElementById("myBox");
+        textArea.select();
+        navigator.clipboard.writeText(textArea.value);
+        props.showalert("Text copied to clipboard", "success");
+    };
 
     const handleClearClick = (event) => {
-    event.preventDefault();
-    setText('');
-    console.log("Text cleared");
+        event.preventDefault();
+        setText('');
+        props.showalert("Text cleared", "success");
     };
 
     const handleExtraSpaces = (event) => {
-    event.preventDefault();
-    let newText = text.split(/\s+/).join(" ");
-    setText(newText.trim());
-    console.log("Extra spaces removed");
-};
-
+        event.preventDefault();
+        let newText = text.split(/\s+/).join(" ").trim();
+        setText(newText);
+        props.showalert("Extra spaces removed", "success");
+    };
 
     return (
         <>
@@ -47,7 +49,7 @@ export default function TextForm(props) {
                     <h1>{props.heading}</h1>
                     <div className="mb-3">
                         <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
-                    </div>        
+                    </div>
                     <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
                     <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to Lowercase</button>
                     <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy Text</button>
