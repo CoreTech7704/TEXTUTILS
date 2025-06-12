@@ -19,6 +19,14 @@ export default function TextForm(props) {
         setText(event.target.value);
     };
 
+    const handleCopy = (event) => {
+        event.preventDefault();
+        console.log("I am Copy");
+        var text = document.getElementById("myBox");
+        text.select();
+        navigator.clipboard.writeText(text.value);
+    }
+
     return (
         <>
             <div className='container'>
@@ -29,6 +37,7 @@ export default function TextForm(props) {
                     </div>        
                     <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
                     <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to Lowercase</button>
+                    <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
                 </form>
             </div>
             <div className="container my-3">
