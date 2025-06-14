@@ -1,46 +1,58 @@
-
 import React, { useState } from 'react';
 import './App.css';
 import Alert from './componets/Alert';
 import Navbar from './componets/Navbar';
-import TextForm from './componets/TextForm'
+import About from './componets/About';
+import TextForm from './componets/TextForm';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
-  const [mode, setmode] = useState('light'); //dark mode enabled or not
-  const [alert, setalert] = useState(null); //dark mode enabled or not
+  const [mode, setMode] = useState('light');
+  const [alert, setAlert] = useState(null);
 
-  const showalert = (message, type) => {
-    setalert({
-      msg: message,
-      type: type
-    })
-    setTimeout(() => {
-      setalert(null);
-    }, 1500);
-  }
-  const ToggleMode = () => {
-  if (mode === 'light') {
-    setmode('dark');
-    document.body.style.backgroundColor = '#121212';
-    document.body.style.color = 'white';
-    showalert("Dark Mode has been enabled", "Success");
-  } else {
-    setmode('light');
-    document.body.style.backgroundColor = 'white';
-    document.body.style.color = 'black';
-    showalert("Light Mode has been enabled", "Success");
-  }
-}
+  const showAlert = (message, type) => {
+    setAlert({ msg: message, type: type });
+    setTimeout(() => setAlert(null), 1500);
+  };
+
+  const toggleMode = () => {
+    if (mode === 'light') {
+      setMode('dark');
+      document.body.style.backgroundColor = '#121212';
+      document.body.style.color = 'white';
+      showAlert("Dark Mode has been enabled", "success");
+    } else {
+      setMode('light');
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+      showAlert("Light Mode has been enabled", "success");
+    }
+  };
 
   return (
-    <>
-      <Navbar title="Textutils" mode={mode} ToggleMode={ToggleMode}/>
-      <Alert alert={alert}></Alert>
+    <Router>
+      <Navbar title="Textutils" mode={mode} ToggleMode={toggleMode} />
+      <Alert alert={alert} />
       <div className="container my-3">
-      <TextForm heading="Enter Text to analyze blow" showalert={showalert}/>
-      {/* <About></About> */}
+        <Routes>
+          <Route path="/about" element={<About mode={mode} />} />
+          <Route
+            path="/"
+            element={
+              <TextForm
+                heading="Enter Text to analyze below"
+                showalert={showAlert}
+                mode={mode}
+              />
+            }
+          />
+        </Routes>
       </div>
-    </>
+    </Router>
   );
 }
 

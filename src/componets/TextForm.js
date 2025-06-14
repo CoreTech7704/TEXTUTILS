@@ -23,9 +23,7 @@ export default function TextForm(props) {
 
     const handleCopy = (event) => {
         event.preventDefault();
-        var textArea = document.getElementById("myBox");
-        textArea.select();
-        navigator.clipboard.writeText(textArea.value);
+        navigator.clipboard.writeText(text);
         props.showalert("Text copied to clipboard", "success");
     };
 
@@ -48,7 +46,17 @@ export default function TextForm(props) {
                 <form>
                     <h1>{props.heading}</h1>
                     <div className="mb-3">
-                        <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+                        <textarea
+                            className="form-control"
+                            value={text}
+                            onChange={handleOnChange}
+                            id="myBox"
+                            rows="8"
+                            style={{
+                                backgroundColor: props.mode === 'dark' ? '#333' : 'white',
+                                color: props.mode === 'dark' ? 'white' : 'black'
+                            }}
+                        ></textarea>
                     </div>
                     <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
                     <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to Lowercase</button>
