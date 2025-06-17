@@ -46,3 +46,24 @@ npm start
 App will run at http://localhost:3000
 
 📁 Project Structure
+    textutils/
+    ├── public/
+    ├── src/
+    │   ├── components/
+    │   │   ├── Navbar.js
+    │   │   ├── Alert.js
+    │   │   └── TextForm.js
+    │   ├── App.js
+    │   ├── index.js
+    │   └── ...
+    ├── tailwind.config.js
+    ├── package.json
+    └── LICENSE
+
+📄 License
+This project is licensed under the MIT License © {datetime.now().year} Sarvam Patel (CoreTech7704)
+
+🙌 Support or Feedback?
+If you like the project, feel free to ⭐ the repo and follow me on GitHub:
+👉 https://github.com/CoreTech7704
+"""
