@@ -1,6 +1,4 @@
-from datetime import datetime
-
-readme_content = f"""# TextUtils 🔤
+## TextUtils 🔤
 
 A responsive and modern React application to analyze and manipulate your text quickly. Includes features like converting text to uppercase/lowercase, copying, removing extra spaces, and real-time word/character count. Built with ❤️ by [CoreTech7704 (Sarvam Patel)](https://github.com/CoreTech7704).
 
