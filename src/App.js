@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Alert from './components/Alert';
 import About from './components/About';
 import TextForm from './components/TextForm';
+import Footer from './components/Footer';
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -16,10 +17,7 @@ function App() {
 
   const showAlert = (message, type) => {
     setAlert({ msg: message, type: type });
-  };
-
-  const clearAlert = () => {
-    setAlert(null);
+    setTimeout(() => setAlert(null), 1500);
   };
 
   const toggleMode = () => {
@@ -38,24 +36,35 @@ function App() {
 
   return (
     <Router>
-      <Alert alert={alert} clearAlert={clearAlert} />
-      <div className={`min-h-screen transition-colors duration-300 ${mode === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+      <div className={`min-h-screen flex flex-col transition-colors duration-300 ${mode === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+        
+        {/* Navbar */}
         <Navbar title="Textutils" mode={mode} ToggleMode={toggleMode} />
-        <div className="max-w-4xl mx-auto px-4 py-6">
-          <Routes>
-            <Route path="/about" element={<About mode={mode} />} />
-            <Route
-              path="/"
-              element={
-                <TextForm
-                  heading="Enter Text to analyze below"
-                  showalert={showAlert}
-                  mode={mode}
-                />
-              }
-            />
-          </Routes>
+
+        {/* Alert (fixed and absolute above content) */}
+        <Alert alert={alert} />
+
+        {/* Main content area that flexes to fill height */}
+        <div className="flex-grow">
+          <div className="max-w-4xl mx-auto px-4 py-6">
+            <Routes>
+              <Route path="/about" element={<About mode={mode} />} />
+              <Route
+                path="/"
+                element={
+                  <TextForm
+                    heading="Enter Text to analyze below"
+                    showalert={showAlert}
+                    mode={mode}
+                  />
+                }
+              />
+            </Routes>
+          </div>
         </div>
+
+        {/* Footer always at bottom */}
+        <Footer mode={mode} />
       </div>
     </Router>
   );
