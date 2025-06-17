@@ -63,7 +63,7 @@ textutils/
 
 
 📄 License
-This project is licensed under the MIT License © {datetime.now().year} Sarvam Patel (CoreTech7704)
+This project is licensed under the MIT License © 2025 Sarvam Patel (CoreTech7704)
 
 🙌 Support or Feedback?
 If you like the project, feel free to ⭐ the repo and follow me on GitHub:
