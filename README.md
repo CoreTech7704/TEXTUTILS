@@ -43,7 +43,9 @@ npm start
 ```
 App will run at http://localhost:3000
 
-📁 Project Structure
+## 📁 Project Structure
+
+```
 textutils/
 ├── public/
 ├── src/
@@ -57,6 +59,8 @@ textutils/
 ├── tailwind.config.js
 ├── package.json
 └── LICENSE
+```
+
 
 📄 License
 This project is licensed under the MIT License © {datetime.now().year} Sarvam Patel (CoreTech7704)
