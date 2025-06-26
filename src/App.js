@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router> {/* Router */}
       <div className={`min-h-screen flex flex-col transition-colors duration-300 ${mode === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
         
         {/* Navbar */}
